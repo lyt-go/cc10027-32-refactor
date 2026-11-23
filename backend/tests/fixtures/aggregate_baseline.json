@@ -1,0 +1,437 @@
+{
+  "source_key": "LOG_-BASELINE",
+  "rules": [
+    {
+      "id": 9001,
+      "规则编号": "AGGR-BASE-COUNT",
+      "关联源": "LOG_-BASELINE",
+      "聚合维度": "level",
+      "聚合函数": "count",
+      "status": "已生效",
+      "pending": false,
+      "abnormal": false
+    },
+    {
+      "id": 9002,
+      "规则编号": "AGGR-BASE-AVG",
+      "关联源": "LOG_-BASELINE",
+      "聚合维度": "level",
+      "聚合函数": "avg_latency",
+      "status": "已生效",
+      "pending": false,
+      "abnormal": false
+    },
+    {
+      "id": 9003,
+      "规则编号": "AGGR-BASE-SUM",
+      "关联源": "LOG_-BASELINE",
+      "聚合维度": "latency_ms",
+      "聚合函数": "sum_latency",
+      "status": "已生效",
+      "pending": false,
+      "abnormal": false
+    },
+    {
+      "id": 9004,
+      "规则编号": "AGGR-BASE-MAX",
+      "关联源": "LOG_-BASELINE",
+      "聚合维度": "level",
+      "聚合函数": "max_latency",
+      "status": "已生效",
+      "pending": false,
+      "abnormal": false
+    },
+    {
+      "id": 9005,
+      "规则编号": "AGGR-BASE-MIN",
+      "关联源": "LOG_-BASELINE",
+      "聚合维度": "level",
+      "聚合函数": "min_latency",
+      "status": "已生效",
+      "pending": false,
+      "abnormal": false
+    }
+  ],
+  "records": [
+    {
+      "source_key": "LOG_-BASELINE",
+      "line_no": 1,
+      "fields": {
+        "level": "INFO",
+        "latency_ms": 100
+      }
+    },
+    {
+      "source_key": "LOG_-BASELINE",
+      "line_no": 2,
+      "fields": {
+        "level": "INFO",
+        "latency_ms": 300
+      }
+    },
+    {
+      "source_key": "LOG_-BASELINE",
+      "line_no": 3,
+      "fields": {
+        "level": "ERROR",
+        "latency_ms": 500
+      }
+    },
+    {
+      "source_key": "LOG_-BASELINE",
+      "line_no": 4,
+      "fields": {
+        "latency_ms": 70
+      }
+    },
+    {
+      "source_key": "LOG_-BASELINE",
+      "line_no": 5,
+      "fields": {
+        "level": "WARN",
+        "latency_ms": 0
+      }
+    },
+    {
+      "source_key": "LOG_-BASELINE",
+      "line_no": 6,
+      "fields": {
+        "level": "WARN",
+        "latency_ms": 20
+      }
+    },
+    {
+      "source_key": "LOG_-BASELINE",
+      "line_no": 7
+    }
+  ],
+  "return_keys": [
+    "results",
+    "rules_applied",
+    "source_key",
+    "total_records"
+  ],
+  "results": {
+    "AGGR-BASE-COUNT": {
+      "rule_id": "AGGR-BASE-COUNT",
+      "dimension": "level",
+      "aggregation": "count",
+      "groups": 4,
+      "results": [
+        {
+          "dimension": "INFO",
+          "count": 2
+        },
+        {
+          "dimension": "ERROR",
+          "count": 1
+        },
+        {
+          "dimension": "LOG_-BASELINE",
+          "count": 2
+        },
+        {
+          "dimension": "WARN",
+          "count": 2
+        }
+      ]
+    },
+    "AGGR-BASE-AVG": {
+      "rule_id": "AGGR-BASE-AVG",
+      "dimension": "level",
+      "aggregation": "avg_latency",
+      "groups": 4,
+      "results": [
+        {
+          "dimension": "INFO",
+          "count": 2,
+          "avg_latency": 200.0
+        },
+        {
+          "dimension": "ERROR",
+          "count": 1,
+          "avg_latency": 500.0
+        },
+        {
+          "dimension": "LOG_-BASELINE",
+          "count": 2,
+          "avg_latency": 70.0
+        },
+        {
+          "dimension": "WARN",
+          "count": 2,
+          "avg_latency": 20.0
+        }
+      ]
+    },
+    "AGGR-BASE-SUM": {
+      "rule_id": "AGGR-BASE-SUM",
+      "dimension": "latency_ms",
+      "aggregation": "sum_latency",
+      "groups": 7,
+      "results": [
+        {
+          "dimension": "100",
+          "count": 1,
+          "total_latency": 100.0
+        },
+        {
+          "dimension": "300",
+          "count": 1,
+          "total_latency": 300.0
+        },
+        {
+          "dimension": "500",
+          "count": 1,
+          "total_latency": 500.0
+        },
+        {
+          "dimension": "70",
+          "count": 1,
+          "total_latency": 70.0
+        },
+        {
+          "dimension": "0",
+          "count": 1,
+          "total_latency": 0.0
+        },
+        {
+          "dimension": "20",
+          "count": 1,
+          "total_latency": 20.0
+        },
+        {
+          "dimension": "LOG_-BASELINE",
+          "count": 1,
+          "total_latency": 0.0
+        }
+      ]
+    },
+    "AGGR-BASE-MAX": {
+      "rule_id": "AGGR-BASE-MAX",
+      "dimension": "level",
+      "aggregation": "max_latency",
+      "groups": 4,
+      "results": [
+        {
+          "dimension": "INFO",
+          "count": 2,
+          "max_latency": 300.0
+        },
+        {
+          "dimension": "ERROR",
+          "count": 1,
+          "max_latency": 500.0
+        },
+        {
+          "dimension": "LOG_-BASELINE",
+          "count": 2,
+          "max_latency": 70.0
+        },
+        {
+          "dimension": "WARN",
+          "count": 2,
+          "max_latency": 20.0
+        }
+      ]
+    },
+    "AGGR-BASE-MIN": {
+      "rule_id": "AGGR-BASE-MIN",
+      "dimension": "level",
+      "aggregation": "min_latency",
+      "groups": 4,
+      "results": [
+        {
+          "dimension": "INFO",
+          "count": 2,
+          "min_latency": 100.0
+        },
+        {
+          "dimension": "ERROR",
+          "count": 1,
+          "min_latency": 500.0
+        },
+        {
+          "dimension": "LOG_-BASELINE",
+          "count": 2,
+          "min_latency": 0.0
+        },
+        {
+          "dimension": "WARN",
+          "count": 2,
+          "min_latency": 0.0
+        }
+      ]
+    }
+  },
+  "product": [
+    {
+      "aggregation": {
+        "rule_id": "AGGR-BASE-COUNT",
+        "dimension": "level",
+        "aggregation": "count",
+        "groups": 4,
+        "results": [
+          {
+            "dimension": "INFO",
+            "count": 2
+          },
+          {
+            "dimension": "ERROR",
+            "count": 1
+          },
+          {
+            "dimension": "LOG_-BASELINE",
+            "count": 2
+          },
+          {
+            "dimension": "WARN",
+            "count": 2
+          }
+        ]
+      },
+      "source_key": "LOG_-BASELINE"
+    },
+    {
+      "aggregation": {
+        "rule_id": "AGGR-BASE-AVG",
+        "dimension": "level",
+        "aggregation": "avg_latency",
+        "groups": 4,
+        "results": [
+          {
+            "dimension": "INFO",
+            "count": 2,
+            "avg_latency": 200.0
+          },
+          {
+            "dimension": "ERROR",
+            "count": 1,
+            "avg_latency": 500.0
+          },
+          {
+            "dimension": "LOG_-BASELINE",
+            "count": 2,
+            "avg_latency": 70.0
+          },
+          {
+            "dimension": "WARN",
+            "count": 2,
+            "avg_latency": 20.0
+          }
+        ]
+      },
+      "source_key": "LOG_-BASELINE"
+    },
+    {
+      "aggregation": {
+        "rule_id": "AGGR-BASE-SUM",
+        "dimension": "latency_ms",
+        "aggregation": "sum_latency",
+        "groups": 7,
+        "results": [
+          {
+            "dimension": "100",
+            "count": 1,
+            "total_latency": 100.0
+          },
+          {
+            "dimension": "300",
+            "count": 1,
+            "total_latency": 300.0
+          },
+          {
+            "dimension": "500",
+            "count": 1,
+            "total_latency": 500.0
+          },
+          {
+            "dimension": "70",
+            "count": 1,
+            "total_latency": 70.0
+          },
+          {
+            "dimension": "0",
+            "count": 1,
+            "total_latency": 0.0
+          },
+          {
+            "dimension": "20",
+            "count": 1,
+            "total_latency": 20.0
+          },
+          {
+            "dimension": "LOG_-BASELINE",
+            "count": 1,
+            "total_latency": 0.0
+          }
+        ]
+      },
+      "source_key": "LOG_-BASELINE"
+    },
+    {
+      "aggregation": {
+        "rule_id": "AGGR-BASE-MAX",
+        "dimension": "level",
+        "aggregation": "max_latency",
+        "groups": 4,
+        "results": [
+          {
+            "dimension": "INFO",
+            "count": 2,
+            "max_latency": 300.0
+          },
+          {
+            "dimension": "ERROR",
+            "count": 1,
+            "max_latency": 500.0
+          },
+          {
+            "dimension": "LOG_-BASELINE",
+            "count": 2,
+            "max_latency": 70.0
+          },
+          {
+            "dimension": "WARN",
+            "count": 2,
+            "max_latency": 20.0
+          }
+        ]
+      },
+      "source_key": "LOG_-BASELINE"
+    },
+    {
+      "aggregation": {
+        "rule_id": "AGGR-BASE-MIN",
+        "dimension": "level",
+        "aggregation": "min_latency",
+        "groups": 4,
+        "results": [
+          {
+            "dimension": "INFO",
+            "count": 2,
+            "min_latency": 100.0
+          },
+          {
+            "dimension": "ERROR",
+            "count": 1,
+            "min_latency": 500.0
+          },
+          {
+            "dimension": "LOG_-BASELINE",
+            "count": 2,
+            "min_latency": 0.0
+          },
+          {
+            "dimension": "WARN",
+            "count": 2,
+            "min_latency": 0.0
+          }
+        ]
+      },
+      "source_key": "LOG_-BASELINE"
+    }
+  ],
+  "total_records": 7,
+  "rules_applied": 5
+}

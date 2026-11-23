@@ -153,3 +153,38 @@ def run_agent_checkpoint_pipeline(agent_code: str) -> dict[str, Any]:
 def run_all_pipelines() -> dict[str, Any]:
     """运行所有管道组合。"""
     return pipeline.run_all_pipelines()
+
+
+# -- 成品写入确认契约：核对清单与确认位置 --
+
+@router.get("/pipelines/aggregate-manifest/{source_key}")
+def get_aggregate_manifest(source_key: str, verify_history: bool = Query(default=True)) -> dict[str, Any]:
+    """查询聚合成品的可核对清单（含每批历史快照是否仍可访问）。"""
+    return pipeline.aggregate_olap.aggregation_manifest(source_key, verify_history=verify_history)
+
+
+@router.get("/pipelines/aggregate-confirmation/{source_key}")
+def get_aggregate_confirmation(source_key: str) -> dict[str, Any]:
+    """核对聚合成品与确认位置；不一致时恢复最近一次确认范围。"""
+    return pipeline.aggregate_olap.confirm_aggregation(source_key)
+
+
+@router.get("/pipelines/export-manifest/{source_key}")
+def get_export_manifest(
+    source_key: str,
+    format_type: str = Query(default="jsonl", alias="format"),
+    verify_history: bool = Query(default=True),
+) -> dict[str, Any]:
+    """查询导出成品的可核对清单（含每批历史快照是否仍可访问）。"""
+    return pipeline.format_output.export_manifest(
+        source_key, format_type, verify_history=verify_history
+    )
+
+
+@router.get("/pipelines/export-confirmation/{source_key}")
+def get_export_confirmation(
+    source_key: str,
+    format_type: str = Query(default="jsonl", alias="format"),
+) -> dict[str, Any]:
+    """核对导出成品与确认位置；不一致时恢复最近一次确认范围。"""
+    return pipeline.format_output.confirm_export(source_key, format_type)
